@@ -1,8 +1,9 @@
 .main-layout {
-    min-height: 100dvh;
+    min-height: 92vh;
     display: flex;
     flex-direction: column;
     & > :nth-child(2){
      flex: 1;
+    margin-top: 6rem;
     }
 }

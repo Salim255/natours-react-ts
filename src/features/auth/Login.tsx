@@ -1,3 +1,4 @@
+import './_login.scss';
 import { useReducer, type SyntheticEvent } from "react";
 
 const initialState: LoginFormState = { email: "", password: "", errors: {} };
@@ -71,40 +72,48 @@ const Login = () => {
         return; console.log("Form submitted:", state); 
     };
    return (
-    <main>
-        <h2> Log into your account </h2>
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label> Email address </label>
-                <input 
-                    type='email' 
-                    name="email"
-                    value={state.email}
-                    placeholder='you@example.com' 
-                    onChange={handleChange} 
-                    required />
-                {state.errors.email && (
-                    <p className="error">{state.errors.email}</p>
-                )}
-            </div>
-            <div>
-                <label>Password</label>
-                <input 
-                    type='password' 
-                    placeholder='••••••••' 
-                    onChange={handleChange} 
-                    name="password"
-                    value={state.password}
-                    required 
-                    minLength={8}/>
-                {state.errors.password && (
-                    <p className="error">{state.errors.password}</p>
-                )
-                }
-            </div>
-            <button type="submit" > Login </button>
-        </form>
-    </main>
+    <div>
+        <main className="main login-form">
+            <h2 className="heading-secondary ma-bt-lg"> Log into your account </h2>
+            <form onSubmit={handleSubmit}  className="form form--login">
+                <div className="form__group">
+                    <label className="form__label"> Email address </label>
+                    <input 
+                        className="form__input"
+                        id="email"
+                        type='email' 
+                        name="email"
+                        value={state.email}
+                        placeholder='you@example.com' 
+                        onChange={handleChange} 
+                        required />
+                    {state.errors.email && (
+                        <p className="error">{state.errors.email}</p>
+                    )}
+                </div>
+                <div className="form__group ma-bt-md">
+                    <label className="form__label">Password</label>
+                    <input 
+                        className="form__input"
+                        id="password"
+                        type='password' 
+                        placeholder='••••••••' 
+                        onChange={handleChange} 
+                        name="password"
+                        value={state.password}
+                        required 
+                        minLength={8}/>
+                    {state.errors.password && (
+                        <p className="error">{state.errors.password}</p>
+                    )
+                    }
+                </div>
+                <div className='form__group'>
+                    <button type="submit" className='btn btn--green' > Login </button>
+                </div>
+            </form>
+        </main>
+    </div>
    )
 }
 export default Login;

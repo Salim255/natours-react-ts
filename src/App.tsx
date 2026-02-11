@@ -1,7 +1,8 @@
 import './App.scss';
+import {RouterProvider} from 'react-router-dom';
 
 function App(){
-  return <></>
+  return <RouterProvider></RouterProvider>
 }
 
 export default App;

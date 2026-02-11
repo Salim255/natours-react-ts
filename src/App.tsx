@@ -4,7 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 
 
 function App(){
-  return <RouterProvider router={AppRoutes}></RouterProvider>
+  return <RouterProvider router={ AppRoutes }></RouterProvider>
 }
 
 export default App;

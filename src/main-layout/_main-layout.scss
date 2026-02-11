@@ -1,4 +1,8 @@
 .main-layout {
-    height: 100dvh;
-    background-color: red;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    & > :nth-child(2){
+     flex: 1;
+    }
 }

@@ -5,19 +5,12 @@ const Header = () => {
         <>
             <header className="header">
                 <nav className='nav nav--tours'>
-                    <a href='#'></a>
+                    <a className='nav__el' href='/'> All tours </a>
                 </nav>
-                <img  src='/img/logo-white.png' className='header__logo'/>
+                <img  alt='Natours logo' src='/img/logo-white.png' className='header__logo'/>
                 <nav className='nav nav--users'  >
-                    <ul className=''>
-                        <li>
-                            Login
-                        </li>
-                     
-                        <li>
-                            About
-                        </li>
-                    </ul>
+                    <a className='nav__el' href='/overview'> Login </a>
+                    <a className='nav__el nav__el--cta'> About </a>
                 </nav>
             </header>
         </>

@@ -5,7 +5,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 // import the app style
-import './index.css';
+import './index.scss';
 
 // Bring the app instance
 import App from "./App";

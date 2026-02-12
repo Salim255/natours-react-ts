@@ -41,41 +41,40 @@ const Overview = () => {
                                         {tour.difficulty} {`${tour.duration}` + '-day tour'}
                                     </h4>
                                     <p className='card__text'> {tour.summary}</p>
-                                       <div className="card__data">
-                                            <svg className="card__icon">
-                                            <use xlinkHref="/img/icons.svg#icon-map-pin" />
-                                            </svg>
-                                            <span>{tour.startLocation.description}</span>
-                                        </div>
-
-                                        <div className="card__data">
-                                            <svg className="card__icon">
-                                            <use xlinkHref="/img/icons.svg#icon-calendar" />
-                                            </svg>
-                                            <span>
-                                            {new Date(tour.startDates[0]).toLocaleString("fr-FR", {
-                                                month: "long",
-                                                year: "numeric",
-                                            })}
-                                            </span>
-                                        </div>
-
-                                        <div className="card__data">
-                                            <svg className="card__icon">
-                                            <use xlinkHref="/img/icons.svg#icon-flag" />
-                                            </svg>
-                                            <span>{`${tour.locations.length} stops`}</span>
-                                        </div>
-
-                                        <div className="card__data">
-                                            <svg className="card__icon">
-                                            <use xlinkHref="/img/icons.svg#icon-user" />
-                                            </svg>
-                                            <span>{`${tour.maxGroupSize} people`}</span>
-                                        </div>
+                                    <div className="card__data">
+                                        <svg className="card__icon">
+                                        <use xlinkHref="/img/icons.svg#icon-map-pin" />
+                                        </svg>
+                                        <span>{tour.startLocation.description}</span>
                                     </div>
-                                     {/* FOOTER */}
-                                    <div className="card__footer">
+                                    <div className="card__data">
+                                        <svg className="card__icon">
+                                        <use xlinkHref="/img/icons.svg#icon-calendar" />
+                                        </svg>
+                                        <span>
+                                        {new Date(tour.startDates[0]).toLocaleString("fr-FR", {
+                                            month: "long",
+                                            year: "numeric",
+                                        })}
+                                        </span>
+                                    </div>
+
+                                    <div className="card__data">
+                                        <svg className="card__icon">
+                                        <use xlinkHref="/img/icons.svg#icon-flag" />
+                                        </svg>
+                                        <span>{`${tour.locations.length} stops`}</span>
+                                    </div>
+
+                                    <div className="card__data">
+                                        <svg className="card__icon">
+                                        <use xlinkHref="/img/icons.svg#icon-user" />
+                                        </svg>
+                                        <span>{`${tour.maxGroupSize} people`}</span>
+                                    </div>
+                                </div>
+                                {/* FOOTER */}
+                                <div className="card__footer">
                                     <p>
                                         <span className="card__footer-value">{`$${tour.price}`}</span>{" "}
                                         <span className="card__footer-text">per person</span>
@@ -91,7 +90,7 @@ const Overview = () => {
                                     <a className="btn btn--green btn--small" href={`/tour/${tour.slug}`} >
                                         Details
                                     </a>
-                                    </div>
+                                </div>
                             </div>
                         )
                     })

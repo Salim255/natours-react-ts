@@ -1,5 +1,8 @@
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../redux/store';
 import './_login.scss';
 import { useReducer, type SyntheticEvent } from "react";
+import { loginUser } from './authSlice';
 
 const initialState: LoginFormState = { email: "", password: "", errors: {} };
 
@@ -38,6 +41,7 @@ function reducer(state: LoginFormState, action: Action) {
     } }
 
 const Login = () => {
+    const loginDispatch = useDispatch<AppDispatch>();
     const [state, dispatch] = useReducer(reducer, initialState);
     
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { 
@@ -66,11 +70,14 @@ const Login = () => {
         return valid; 
     };
 
+   
     const handleSubmit = (event: SyntheticEvent) => { 
         event.preventDefault();
-        if (!validate())
-        return; console.log("Form submitted:", state); 
+        if (!validate()) return; 
+        loginDispatch(loginUser({email: state.email, password: state.password}))
+        console.log("Form submitted:", state); 
     };
+
    return (
     <div>
         <main className="main login-form">

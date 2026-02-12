@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const url = "http://localhost:8000/api/v1/tours";
+
 type ToursState = { 
     tours: any[]; // or your Tour type 
     isLoading: boolean; 

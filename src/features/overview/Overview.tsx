@@ -7,28 +7,18 @@ import { useEffect } from 'react';
 
 
 const Overview = () => {
-    const touro: {
-        imageCover: string;
-        name: string;
-        duration: string;
-        difficulty: string;
-        summary: string;
-        locations: {length: number};
-        startLocation: {description: string};
-        startDates: Date[];
-        maxGroupSize: number;
-        price: number;
-        ratingsAverage: number;
-        ratingsQuantity: number;
-        slug: string;
-    }[] = [];
-    const {tours} = useSelector((store: RootState) => store.tours);
-    console.log(tours);
+    const {tours, isLoading} = useSelector((store: RootState) => store.tours);
+
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         // call sever
-        dispatch(getTours());
-    }, [dispatch])
+        console.log('running...')
+        if(!tours.length) {
+            dispatch(getTours());
+            console.log("runs from inside")
+        };
+    }, [dispatch, tours.length]);
+
     return (
         <div>
             <main className='main card-container'>

@@ -10,10 +10,16 @@ import './index.scss';
 // Bring the app instance
 import App from "./App";
 
+// Provider this is the library that Connect Redux store
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
 const appRoot = document.getElementById('root')!;
 
 createRoot(appRoot).render(
   <StrictMode>
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
   </StrictMode>
 )  

@@ -14,5 +14,8 @@ const store = configureStore({
 });
 
 
+// Type definitions
+export type RootState = ReturnType<typeof store.getState>; 
+export type AppDispatch = typeof store.dispatch;
 // Will be used in index
 export default store;

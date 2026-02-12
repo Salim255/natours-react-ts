@@ -1,7 +1,13 @@
+import { useSelector, useDispatch } from 'react-redux';
 import './_overview.scss';
+import type { AppDispatch, RootState } from '../../redux/store';
+import { getTours } from './overviewSlice';
+import { useEffect } from 'react';
+
+
 
 const Overview = () => {
-    const tours: {
+    const touro: {
         imageCover: string;
         name: string;
         duration: string;
@@ -16,6 +22,13 @@ const Overview = () => {
         ratingsQuantity: number;
         slug: string;
     }[] = [];
+    const {tours} = useSelector((store: RootState) => store.tours);
+    console.log(tours);
+    const dispatch = useDispatch<AppDispatch>();
+    useEffect(() => {
+        // call sever
+        dispatch(getTours());
+    }, [dispatch])
     return (
         <div>
             <main className='main card-container'>

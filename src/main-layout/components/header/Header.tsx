@@ -7,9 +7,11 @@ import { clearUser } from '../../../features/auth/authSlice';
 const Header = () => {
     const {user} = useSelector((store: RootState) => store.auth);
     const dispatch = useDispatch<AppDispatch>();
+
      const handleLogout = () => {
-        dispatch(clearUser.clearUser());
+        dispatch(clearUser());
      }
+
     return (
         <header className="header">
             <nav className='nav nav--tours'>

@@ -61,7 +61,7 @@ const authSlice = createSlice({
 
 // Handlers
 // 1 Clear user data
-export const clearUser = authSlice.actions;
+export const { clearUser } = authSlice.actions;
 
 // Reducer
 export default authSlice.reducer;

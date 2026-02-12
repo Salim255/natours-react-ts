@@ -32,7 +32,13 @@ const initialState: InitiateState = {
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
+    reducers: {
+        clearUser: (state) => {
+            state.isLoading = true;
+            state.user = undefined;
+            state.isLoading = false;
+        }
+    },
     // Listen to fetch or the fetch call event
     extraReducers: (builder) => {
         builder
@@ -52,4 +58,10 @@ const authSlice = createSlice({
     }
 })
 
+
+// Handlers
+// 1 Clear user data
+export const clearUser = authSlice.actions;
+
+// Reducer
 export default authSlice.reducer;

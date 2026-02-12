@@ -1,11 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './_header.scss';
-import type { RootState } from '../../../redux/store';
+import type { AppDispatch, RootState } from '../../../redux/store';
 import { Link } from 'react-router-dom';
+import { clearUser } from '../../../features/auth/authSlice';
 
 const Header = () => {
     const {user} = useSelector((store: RootState) => store.auth);
-      console.log(user)
+    const dispatch = useDispatch<AppDispatch>();
+     const handleLogout = () => {
+        dispatch(clearUser.clearUser());
+     }
     return (
         <header className="header">
             <nav className='nav nav--tours'>
@@ -18,7 +22,10 @@ const Header = () => {
                 {
                     user ? 
                     <>
-                        <a className='nav__el.nav__el--logout' href='#'>
+                        <a 
+                            onClick={handleLogout}
+                            className='nav__el nav__el--logout'
+                            href='#' >
                             Log out 
                         </a>
                         <a className='nav__el' href='#'></a>

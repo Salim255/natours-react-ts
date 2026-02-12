@@ -1,8 +1,9 @@
-import { useDispatch } from 'react-redux';
-import type { AppDispatch } from '../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../redux/store';
 import './_login.scss';
-import { useReducer, type SyntheticEvent } from "react";
+import { useEffect, useReducer, type SyntheticEvent } from "react";
 import { loginUser } from './authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const initialState: LoginFormState = { email: "", password: "", errors: {} };
 
@@ -41,8 +42,10 @@ function reducer(state: LoginFormState, action: Action) {
     } }
 
 const Login = () => {
+    const navigate = useNavigate();
     const loginDispatch = useDispatch<AppDispatch>();
     const [state, dispatch] = useReducer(reducer, initialState);
+    const {user} = useSelector((store: RootState) => store.auth)
     
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { 
         dispatch({ 
@@ -74,10 +77,15 @@ const Login = () => {
     const handleSubmit = (event: SyntheticEvent) => { 
         event.preventDefault();
         if (!validate()) return; 
-        loginDispatch(loginUser({email: state.email, password: state.password}))
+        loginDispatch(loginUser({email: state.email, password: state.password}));
         console.log("Form submitted:", state); 
     };
 
+    
+    useEffect(() => {
+        if (user) navigate("/overview");
+    }, [user, navigate]);
+    
    return (
     <div>
         <main className="main login-form">
